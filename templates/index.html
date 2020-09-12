@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+        integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <title>ChatBot</title>
+    <style>
+        .cform {
+            margin-top: 150px;
+            margin-left: 50px;
+        }
+
+        .cbot {
+            margin-left: 50px;
+        }
+
+        .cform>input[type="text"] {
+            width: 300px;
+        }
+
+        .cbutton {
+            margin-top: 10px;
+        }
+
+        .cp {
+            font-size: 20px;
+            display: block;
+            margin-left: 50px;
+        }
+
+        .cinput {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <form class="pure-form pure-form-stacked cform" action="/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="pure-button cbutton" value="Submit">
+    </form>
+    <br />
+    {% if message %}
+    <p class="cp">Bot:</p>
+    <form class="pure-form pure-form-stacked cbot" method="GET">
+        {% csrf_token %}
+        <input class="cinput" type="text" readonly="" value="{{message}}" />
+    </form>
+    {% endif %}
+</body>
+
+</html>
